@@ -1,0 +1,332 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!-- Hero Start -->
+    <div class="container-fluid bg-primary py-5 mb-5 hero-header">
+        <div class="container py-5">
+            <div class="row justify-content-start">
+                <div class="col-lg-8 text-center text-lg-start">
+                    <h1 class="font-secondary text-primary mb-4">Super </h1>
+                    <h1 class="display-1 text-uppercase text-white mb-4">CakeZone</h1>
+                    <h1 class="text-uppercase text-white">Londondagi eng yaxshi to'rt </h1>
+                    <div class="d-flex align-items-center justify-content-center justify-content-lg-start pt-5">
+                        <a href="" class="btn btn-primary border-inner py-3 px-5 me-5">Batafsil o'qing</a>
+                        <button type="button" class="btn-play" data-bs-toggle="modal"
+                            data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
+                            <span></span>
+                        </button>
+                        <h5 class="font-weight-normal text-white m-0 ms-4 d-none d-sm-block">Video</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hero End -->
+
+
+    <!-- Video Modal Start -->
+    <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content rounded-0">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Youtube Video</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- 16:9 aspect ratio -->
+                    <div class="ratio ratio-16x9">
+                        <iframe class="embed-responsive-item" src="" id="video" allowfullscreen allowscriptaccess="always"
+                            allow="autoplay"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Video Modal End -->
+
+
+    <!-- About Start -->
+    <div class="container-fluid pt-5">
+        {% for x in about %}
+        <div class="container">
+            <div class="section-title position-relative text-center mx-auto mb-5 pb-3" style="max-width: 600px;">
+                <a  href="{% url 'aboutdetail' x.id %}"></a><h2 class="text-primary font-secondary">{{x.name}}</h2>
+                <h1 class="display-4 text-uppercase">Hush kelibsiz to'rtlar olamiga</h1>
+            </div>
+            <div class="row gx-5">
+                <div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 400px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute w-100 h-100" src="{{x.img.url}}" style="object-fit: cover;">
+                    </div>
+                </div>
+                <div class="col-lg-6 pb-5">
+                    <h4 class="mb-4">Tortlar — bayramlarda ajralmas shirinlikdir. Turli ta'mlar va bezaklar bilan bezatilgan tortlar, har bir tadbirga rang-baranglik kiritadi.</h4>
+                    <p class="mb-5">{{x.bio}}</p>
+                    <div class="row g-5">
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-center justify-content-center bg-primary border-inner mb-4" style="width: 90px; height: 90px;">
+                                <i class="fa fa-heartbeat fa-2x text-white"></i>
+                            </div>
+                            <h4 class="text-uppercase">100% Sog'lom</h4>
+                            <p class="mb-0">{{x.bio}}</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-center justify-content-center bg-primary border-inner mb-4" style="width: 90px; height: 90px;">
+                                <i class="fa fa-award fa-2x text-white"></i>
+                            </div>
+                            <h4 class="text-uppercase">Mukofotga sazovor bo'lgan</h4>
+                            <p class="mb-0">{{x.bio}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <!-- About End -->
+
+
+    <!-- Facts Start -->
+    <div class="container-fluid bg-img py-5 mb-5">
+        {% for x in facts %}
+        <div class="container py-5">
+            <div class="row gx-5 gy-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="d-flex">
+                        <div class="bg-primary border-inner d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="fa fa-star text-white"></i>
+                        </div>
+                        <div class="ps-4">
+                            <a  href="{% url 'factsdetail' x.id %}"></a><h6 class="text-primary text-uppercase">To'liq loyiha</h6>
+                            <h1 class="display-5 text-white mb-0" data-toggle="counter-up">123</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="d-flex">
+                        <div class="bg-primary border-inner d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="fa fa-users text-white"></i>
+                        </div>
+                        <div class="ps-4">
+                            <h6 class="text-primary text-uppercase">Tort ustasi</h6>
+                            <h1 class="display-5 text-white mb-0" data-toggle="counter-up">123</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="d-flex">
+                        <div class="bg-primary border-inner d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="fa fa-check text-white"></i>
+                        </div>
+                        <div class="ps-4">
+                            <h6 class="text-primary text-uppercase">To'liq yakunlangan loyiha</h6>
+                            <h1 class="display-5 text-white mb-0" data-toggle="counter-up">123</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="d-flex">
+                        <div class="bg-primary border-inner d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="fa fa-mug-hot text-white"></i>
+                        </div>
+                        <div class="ps-4">
+                            <h6 class="text-primary text-uppercase">Baxtli mijozlar</h6>
+                            <h1 class="display-5 text-white mb-0" data-toggle="counter-up">123</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <!-- Facts End -->
+
+
+    <!-- Products Start -->
+    <div class="container-fluid about py-5">
+        {% for x in products %}
+        <div class="container">
+            <div class="section-title position-relative text-center mx-auto mb-5 pb-3" style="max-width: 600px;">
+                <h2 class="text-primary font-secondary">Meyu  & Narxi</h2>
+                <h1 class="display-4 text-uppercase">Bizning kekslarimizni o'rganing</h1>
+            </div>
+            <div class="tab-class text-center">
+                <ul class="nav nav-pills d-inline-flex justify-content-center bg-dark text-uppercase border-inner p-4 mb-5">
+                    <li class="nav-item">
+                        <a class="nav-link text-white active" data-bs-toggle="pill" href="#tab-1">Tug'ilgan kunga </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" data-bs-toggle="pill" href="#tab-2">To'ylarga</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" data-bs-toggle="pill" href="#tab-3">Mijozlarga </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div id="tab-1" class="tab-pane fade show p-0 active">
+                        <div class="row g-3">
+                            <div class="col-lg-6">
+                                <div class="d-flex h-100">
+                                    <div class="flex-shrink-0">
+                                        <img class="img-fluid" src="{{x.img.url}}" alt="" style="width: 150px; height: 85px;">
+                                        <h4 class="bg-dark text-primary p-2 m-0">$100</h4>
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center text-start bg-secondary border-inner px-4">
+                                        <a  href="{% url 'productsdetail' x.id %}"></a><h5 class="text-uppercase">Tug'ilgan kun to'rti</h5>
+                                        <span>{{x.bio}}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                    <div id="tab-2" class="tab-pane fade show p-0">
+                        <div class="row g-3">
+                            <div class="col-lg-6">
+                                <div class="d-flex h-100">
+                                    <div class="flex-shrink-0">
+                                        <img class="img-fluid" src="{{x.img.url}}" alt="" style="width: 150px; height: 85px;">
+                                        <h4 class="bg-dark text-primary p-2 m-0">$100</h4>
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center text-start bg-secondary border-inner px-4">
+                                        <h5 class="text-uppercase">To'y tortlari</h5>
+                                        <span>{{x.bio}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                    <div id="tab-3" class="tab-pane fade show p-0">
+                        <div class="row g-3">
+                            <div class="col-lg-6">
+                                <div class="d-flex h-100">
+                                    <div class="flex-shrink-0">
+                                        <img class="img-fluid" src="{{x.img.url}}" alt="" style="width: 150px; height: 85px;">
+                                        <h4 class="bg-dark text-primary p-2 m-0">$100</h4>
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center text-start bg-secondary border-inner px-4">
+                                        <h5 class="text-uppercase">Maxsus to'rtlar</h5>
+                                        <span>{{x.bio}}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+        {% endfor %}
+    </div>
+    <!-- Products End -->
+
+
+    <!-- Service Start -->
+    <div class="container-fluid service position-relative px-5 mt-5" style="margin-bottom: 135px;">
+        <div class="container">
+            {% for x in service %}
+            <div class="row g-5">
+                <div class="col-lg-4 col-md-6">
+                    <div class="bg-primary border-inner text-center text-white p-5">
+                        <h4 class="text-uppercase mb-3">Tug'ilgan kun to'rti</h4>
+                        <p> maxsus dizayn va ta'mga ega to'rtdir. Odatda, shaxsiy xohishlarga mos ravishda bezatiladi va tortda tug'ilgan kunga bag'ishlangan yozuvlar bo'ladi.</p>
+                        <a class="text-uppercase text-dark" href="">Batafsil o'qing<i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="bg-primary border-inner text-center text-white p-5">
+                        <a  href="{% url 'servicedetail' x.id %}"></a><h4 class="text-uppercase mb-3">To'y to'rti</h4>
+                        <p>o'ziga xos dizayn va bezaklar bilan tayyorlangan maxsus tortdir. Odatda, to'yning mavzusiga mos ravishda bezatiladi</p>
+                        <a class="text-uppercase text-dark" href="">Batafsil o'qing <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="bg-primary border-inner text-center text-white p-5">
+                        <h4 class="text-uppercase mb-3">Maxsus to'rt</h4>
+                        <p>bu mijozning talabiga mos ravishda tayyorlangan tortlar</p>
+                        <a class="text-uppercase text-dark" href="">Batafsil o'qing<i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-6 text-center">
+                    <h1 class="text-uppercase text-light mb-4">Bu Yozda 30% Chegirma</h1>
+                    <a href="" class="btn btn-primary border-inner py-3 px-5">Hozir Buyurtma Qiling</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <!-- Service Start -->
+
+
+    <!-- Team Start -->
+    <div class="container-fluid py-5">
+        {% for x in team %}
+        <div class="container">
+            <div class="section-title position-relative text-center mx-auto mb-5 pb-3" style="max-width: 600px;">
+                <h2 class="text-primary font-secondary">Jamoa azolari</h2>
+                <h1 class="display-4 text-uppercase">Usta oshpazlarimiz</h1>
+            </div>
+            <div class="row g-5">
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-item">
+                        <div class="position-relative overflow-hidden">
+                            <img class="img-fluid w-100" src="{{x.img.url}}" alt="">
+                            <div class="team-overlay w-100 h-100 position-absolute top-50 start-50 translate-middle d-flex align-items-center justify-content-center">
+                                <div class="d-flex align-items-center justify-content-start">
+                                    <a class="btn btn-lg btn-primary btn-lg-square border-inner rounded-0 mx-1" href="#"><i class="fab fa-twitter fw-normal"></i></a>
+                                    <a class="btn btn-lg btn-primary btn-lg-square border-inner rounded-0 mx-1" href="#"><i class="fab fa-facebook-f fw-normal"></i></a>
+                                    <a class="btn btn-lg btn-primary btn-lg-square border-inner rounded-0 mx-1" href="#"><i class="fab fa-linkedin-in fw-normal"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-dark border-inner text-center p-4">
+                            <a  href="{% url 'teamdetail' x.id %}"></a><h4 class="text-uppercase text-primary">{{x.Name}}</h4>
+                            <p class="text-white m-0">{{x.bio}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <!-- Team End -->
+
+
+    <!-- Offer Start -->
+    <div class="container-fluid bg-offer my-5 py-5">
+        {% for x in offer %}
+        <div class="container py-5">
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-7 text-center">
+                    <div class="section-title position-relative text-center mx-auto mb-4 pb-3" style="max-width: 600px;">
+                       <a  href="{% url 'offerdetail' x.id %}"></a> <h2 class="text-primary font-secondary">Maxsus Kombo Paket</h2>
+                        <h1 class="display-4 text-uppercase text-white">Super Qarsillovchi Kekslar</h1>
+                    </div>
+                    <p class="text-white mb-4">Qarsillab pishgan kekslar, har bir tishlashda ajoyib ta'mni his qilasiz</p>
+                    <a href="" class="btn btn-primary border-inner py-3 px-5 me-3">Sotib oling</a>
+                    <a href="" class="btn btn-dark border-inner py-3 px-5">Batafsil o'qing</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <!-- Offer End -->
+
+
+    <!-- Testimonial Start -->
+    <div class="container-fluid py-5">
+        {% for x in testimonial %}
+        <div class="container">
+            <div class="section-title position-relative text-center mx-auto mb-5 pb-3" style="max-width: 600px;">
+                <h2 class="text-primary font-secondary">Fikr-mulohaza</h2>
+                <h1 class="display-4 text-uppercase">Mijozlarimiz nima deyishadi!!!</h1>
+            <div class="owl-carousel testimonial-carousel">
+                <div class="testimonial-item bg-dark text-white border-inner p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img class="img-fluid flex-shrink-0" src="{{x.img.url}}" style="width: 60px; height: 60px;">
+                        <div class="ps-3">
+                            <a  href="{% url 'testimonialdetail' x.id %}"></a><h4 class="text-primary text-uppercase mb-1">{{x.name}}</h4>
+                            <span>Profession</span>
+                        </div>
+                    </div>
+                    <p class="mb-0">{{x.bio}}</p>
+                </div>
+
+            </div>
+        </div>
+
+         {% endfor %}
+    </div>
+    <!-- Testimonial End -->
+        {% endblock content %}
